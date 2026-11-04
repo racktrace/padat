@@ -1,5 +1,9 @@
 # padat
 
+[![CI](https://github.com/racktrace/padat/actions/workflows/ci.yml/badge.svg)](https://github.com/racktrace/padat/actions/workflows/ci.yml)
+
+A plain Hugo starter. Complete in structure, neutral in looks.
+
 A plain Hugo starter. Complete in structure, neutral in looks.
 
 ## Principles
@@ -100,7 +104,21 @@ Validate the RSS feeds:
 Note: `check-weight.sh` counts local assets only. External resources
 such as YouTube thumbnails are not included.
 
-## CI notes
+## CI
 
-- Clone with full history (`fetch-depth: 0` in GitHub Actions), otherwise every page shows the same "Updated" date.
-- Pin the Hugo version used in CI to the one used locally.
+Every push and pull request runs `.github/workflows/ci.yml`:
+
+1. Build with a pinned Hugo version (`HUGO_VERSION`).
+2. Check home page weight against a 10 KB budget.
+3. Validate every generated XML file (RSS, sitemap).
+4. Check internal links and anchors with hyperlink.
+
+Notes:
+
+- The repository is cloned with full history (`fetch-depth: 0`) so "Updated" dates from git are correct.
+- Run the same checks locally before pushing:
+
+      hugo build --minify --cleanDestinationDir
+      ./scripts/check-weight.sh
+      xmllint --noout public/index.xml
+      hyperlink public/ --check-anchors --sources content/
