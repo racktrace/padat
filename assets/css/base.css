@@ -1,0 +1,14 @@
+@layer padat {
+  /* Ikuti mode terang/gelap dari OS, memakai warna bawaan browser */
+  :root { color-scheme: light dark; }
+
+  /* Batasi panjang baris supaya nyaman dibaca di layar lebar */
+  body { max-width: 70ch; margin: 0 auto; padding: 0 1rem; line-height: 1.5; }
+
+  /* Media tidak boleh melebihi layar */
+  img, video, svg { max-width: 100%; height: auto; }
+
+  /* Kode dan tabel yang lebar di-scroll di dalam kotaknya sendiri */
+  pre { overflow-x: auto; }
+  table { display: block; max-width: 100%; overflow-x: auto; }
+}
