@@ -1,0 +1,14 @@
+[skip_to_content]
+other = 'Langsung ke isi'
+
+[recent]
+other = 'Terbaru'
+
+[tags]
+other = 'Tag'
+
+[page_not_found]
+other = 'Halaman tidak ditemukan.'
+
+[back_to_home]
+other = 'Kembali ke beranda'

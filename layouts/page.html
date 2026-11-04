@@ -5,5 +5,10 @@
       <p><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></p>
     {{ end }}
     {{ .Content }}
+    {{ with .GetTerms "tags" }}
+      <p>{{ i18n "tags" }}:
+        {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}
+      </p>
+    {{ end }}
   </article>
 {{ end }}

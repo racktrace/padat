@@ -1,0 +1,14 @@
+[skip_to_content]
+other = 'Skip to content'
+
+[recent]
+other = 'Recent'
+
+[tags]
+other = 'Tags'
+
+[page_not_found]
+other = 'Page not found.'
+
+[back_to_home]
+other = 'Back to home'
