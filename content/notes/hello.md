@@ -1,6 +1,6 @@
 +++
 date = '2026-11-05T03:19:18+08:00'
-draft = true
+draft = false
 title = 'Hello'
 tags = ['linux', 'hugo']
 +++
