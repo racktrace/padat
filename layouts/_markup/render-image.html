@@ -1,0 +1,28 @@
+{{- $u := urls.Parse .Destination -}}
+{{- $alt := .PlainText -}}
+{{- $r := "" -}}
+{{- if not $u.IsAbs }}{{ $r = .PageInner.Resources.Get $u.Path }}{{ end -}}
+{{- if .IsBlock }}<figure>{{ end -}}
+{{- with $r -}}
+  {{- if in (slice "svg" "gif") .MediaType.SubType -}}
+    <img src="{{ .RelPermalink }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+  {{- else -}}
+    {{- /* PNG = screenshot/diagram: lossless. Lainnya = foto: lossy. */ -}}
+    {{- $spec := "webp q80 photo" -}}
+    {{- if eq .MediaType.SubType "png" }}{{ $spec = "webp lossless" }}{{ end -}}
+    {{- $img := . -}}
+    {{- if gt .Width 1200 }}
+      {{- $img = .Resize (printf "1200x %s lanczos" $spec) -}}
+    {{- else }}
+      {{- $img = .Process $spec -}}
+    {{- end -}}
+    <img src="{{ $img.RelPermalink }}" alt="{{ $alt }}" width="{{ $img.Width }}" height="{{ $img.Height }}" loading="lazy" decoding="async">
+  {{- end -}}
+{{- end -}}
+{{- if not $r -}}
+  <img src="{{ .Destination }}" alt="{{ $alt }}" loading="lazy" decoding="async">
+{{- end -}}
+{{- if .IsBlock -}}
+  {{- with .Title }}<figcaption>{{ . }}</figcaption>{{ end -}}
+  </figure>
+{{- end -}}

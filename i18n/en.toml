@@ -12,3 +12,9 @@ other = 'Page not found.'
 
 [back_to_home]
 other = 'Back to home'
+
+[contents]
+other = 'Contents'
+
+[link_to_section]
+other = 'Link to this section'

@@ -12,3 +12,9 @@ other = 'Halaman tidak ditemukan.'
 
 [back_to_home]
 other = 'Kembali ke beranda'
+
+[contents]
+other = 'Daftar isi'
+
+[link_to_section]
+other = 'Tautan ke bagian ini'

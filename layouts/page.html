@@ -4,6 +4,12 @@
     {{ if in site.Params.mainSections .Section }}
       <p><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></p>
     {{ end }}
+    {{ if .Params.toc }}
+      <details>
+        <summary>{{ i18n "contents" }}</summary>
+        {{ .TableOfContents }}
+      </details>
+    {{ end }}
     {{ .Content }}
     {{ with .GetTerms "tags" }}
       <p>{{ i18n "tags" }}:

@@ -4,3 +4,13 @@ title = 'Padat'
 
 [taxonomies]
   tag = 'tags'
+
+[markup.highlight]
+  noClasses = false
+
+[markup.goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false
+
+[[cascade]]
+  [cascade.build]
+    publishResources = false

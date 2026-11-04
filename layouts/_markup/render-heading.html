@@ -1,0 +1,3 @@
+<h{{ .Level }} id="{{ .Anchor }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
+  {{- .Text }} <a href="#{{ .Anchor }}" aria-label="{{ i18n "link_to_section" }}">#</a>
+</h{{ .Level }}>
