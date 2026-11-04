@@ -30,3 +30,9 @@ other = 'Halaman {{ .Current }} dari {{ .Total }}'
 
 [see_all]
 other = 'Lihat semua'
+
+[updated]
+other = 'Diperbarui'
+
+[related]
+other = 'Terkait'

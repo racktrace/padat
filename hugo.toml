@@ -3,6 +3,7 @@ locale = 'en-us'
 title = 'Padat'
 
 enableRobotsTXT = true
+enableGitInfo = true
 
 [pagination]
   pagerSize = 10
@@ -21,22 +22,17 @@ enableRobotsTXT = true
     pageRef = '/notes'
     weight = 10
   [[menus.main]]
+    name = 'Archive'
+    pageRef = '/archive'
+    weight = 20
+  [[menus.main]]
     name = 'Tags'
     pageRef = '/tags'
-    weight = 20
+    weight = 30
   [[menus.main]]
     name = 'About'
     pageRef = '/about'
-    weight = 30
-
-  [[menus.footer]]
-    name = 'RSS'
-    url = '/index.xml'
-    weight = 10
-  [[menus.footer]]
-    name = 'GitHub'
-    url = 'https://github.com/racktrace'
-    weight = 20
+    weight = 40
 
 [taxonomies]
   tag = 'tags'

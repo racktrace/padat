@@ -30,3 +30,9 @@ other = 'Page {{ .Current }} of {{ .Total }}'
 
 [see_all]
 other = 'See all'
+
+[updated]
+other = 'Updated'
+
+[related]
+other = 'Related'

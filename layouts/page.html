@@ -1,8 +1,14 @@
 {{ define "main" }}
+  {{ $isMain := in site.Params.mainSections .Section }}
   <article>
     <h1>{{ .Title }}</h1>
-    {{ if in site.Params.mainSections .Section }}
-      <p><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></p>
+    {{ if $isMain }}
+      <p>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{- if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+          · {{ i18n "updated" }} <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time>
+        {{- end }}
+      </p>
     {{ end }}
     {{ if .Params.toc }}
       <details>
@@ -16,7 +22,11 @@
         {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}
       </p>
     {{ end }}
-        {{ if in site.Params.mainSections .Section }}
+    {{ if $isMain }}
+      {{ with first 3 (site.RegularPages.Related .) }}
+        <h2>{{ i18n "related" }}</h2>
+        {{ partial "page-list.html" . }}
+      {{ end }}
       {{ $pages := where site.RegularPages "Section" .Section }}
       {{ $newer := $pages.Next . }}
       {{ $older := $pages.Prev . }}
