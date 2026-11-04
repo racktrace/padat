@@ -1,5 +1,7 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ partial "page-list.html" .Pages.ByDate.Reverse }}
+  {{ $paginator := .Paginate .Pages.ByDate.Reverse }}
+  {{ partial "page-list.html" $paginator.Pages }}
+  {{ partial "pagination.html" $paginator }}
 {{ end }}

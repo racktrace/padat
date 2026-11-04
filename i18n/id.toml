@@ -18,3 +18,15 @@ other = 'Daftar isi'
 
 [link_to_section]
 other = 'Tautan ke bagian ini'
+
+[newer]
+other = 'Lebih baru'
+
+[older]
+other = 'Lebih lama'
+
+[page_x_of_y]
+other = 'Halaman {{ .Current }} dari {{ .Total }}'
+
+[see_all]
+other = 'Lihat semua'

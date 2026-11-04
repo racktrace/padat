@@ -18,3 +18,15 @@ other = 'Contents'
 
 [link_to_section]
 other = 'Link to this section'
+
+[newer]
+other = 'Newer'
+
+[older]
+other = 'Older'
+
+[page_x_of_y]
+other = 'Page {{ .Current }} of {{ .Total }}'
+
+[see_all]
+other = 'See all'

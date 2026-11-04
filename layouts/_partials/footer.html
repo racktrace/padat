@@ -1,1 +1,8 @@
-<p>© {{ now.Year }} {{ site.Title }}</p>
+{{ with site.Menus.footer }}
+  <nav aria-label="Footer">
+    <ul>
+      {{ range . }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+    </ul>
+  </nav>
+{{ end }}
+<p>{{ with site.Params.copyright }}{{ . }}{{ else }}© {{ now.Year }} {{ site.Title }}{{ end }}</p>

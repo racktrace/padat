@@ -2,9 +2,16 @@ baseURL = 'https://example.org/'
 locale = 'en-us'
 title = 'Padat'
 
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
 [params]
   description = 'A plain Hugo starter.'
   mainSections = ['notes']
+  recentCount = 10
+  # copyright = 'Custom footer text'
   # logo = 'images/logo.svg'
   # favicon = 'favicon.svg'
 
@@ -16,6 +23,19 @@ title = 'Padat'
   [[menus.main]]
     name = 'Tags'
     pageRef = '/tags'
+    weight = 20
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 30
+
+  [[menus.footer]]
+    name = 'RSS'
+    url = '/index.xml'
+    weight = 10
+  [[menus.footer]]
+    name = 'GitHub'
+    url = 'https://github.com/racktrace'
     weight = 20
 
 [taxonomies]
