@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Notes on My New Hugo Project</title>
+		<link>http://localhost:1313/notes/</link>
+		<description>Recent content in Notes on My New Hugo Project</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 05 Nov 2026 03:19:18 +0800</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/notes/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Hello</title>
+				<link>http://localhost:1313/notes/hello/</link>
+				<pubDate>Thu, 05 Nov 2026 03:19:18 +0800</pubDate>
+				<guid>http://localhost:1313/notes/hello/</guid>
+				<description>&lt;p&gt;First note. This page has no CSS at all.&lt;/p&gt;&#xA;&lt;h2 id=&#34;a-subheading&#34;&gt;A subheading&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;one&lt;/li&gt;&#xA;&lt;li&gt;two&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+			</item>
+	</channel>
+</rss>

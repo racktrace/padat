@@ -1,0 +1,9 @@
+{{ define "main" }}
+  <h1>{{ site.Title }}</h1>
+  {{ with site.Params.description }}<p>{{ . }}</p>{{ end }}
+  {{ .Content }}
+  {{ with (where site.RegularPages "Section" "in" site.Params.mainSections).ByDate.Reverse }}
+    <h2>Recent</h2>
+    {{ partial "page-list.html" . }}
+  {{ end }}
+{{ end }}

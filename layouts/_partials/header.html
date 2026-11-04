@@ -1,0 +1,13 @@
+<p><a href="{{ "/" | relURL }}">{{ site.Title }}</a></p>
+{{ with site.Menus.main }}
+  <nav aria-label="Main">
+    <ul>
+      {{ range . }}
+        <li><a href="{{ .URL }}"
+          {{- if or ($.IsMenuCurrent .Menu .) ($.HasMenuCurrent .Menu .) }} aria-current="page"{{ end }}>
+          {{- .Name -}}
+        </a></li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}
