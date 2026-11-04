@@ -1,4 +1,7 @@
-<p><a href="{{ "/" | relURL }}">{{ site.Title }}</a></p>
+<p><a href="{{ "/" | relURL }}">
+  {{- with site.Params.logo }}{{ with resources.Get . }}{{ .Content | safeHTML }} {{ end }}{{ end -}}
+  {{ site.Title }}
+</a></p>
 {{ with site.Menus.main }}
   <nav aria-label="Main">
     <ul>

@@ -2,6 +2,22 @@ baseURL = 'https://example.org/'
 locale = 'en-us'
 title = 'Padat'
 
+[params]
+  description = 'A plain Hugo starter.'
+  mainSections = ['notes']
+  # logo = 'images/logo.svg'
+  # favicon = 'favicon.svg'
+
+[menus]
+  [[menus.main]]
+    name = 'Notes'
+    pageRef = '/notes'
+    weight = 10
+  [[menus.main]]
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 20
+
 [taxonomies]
   tag = 'tags'
 
@@ -14,3 +30,4 @@ title = 'Padat'
 [[cascade]]
   [cascade.build]
     publishResources = false
+

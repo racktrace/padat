@@ -3,12 +3,18 @@
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
 <link rel="canonical" href="{{ .Permalink }}">
-{{ with .OutputFormats.Get "rss" }}
-  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
-{{ end }}
-{{ with resources.Get "css/base.css" }}
-  {{ $files := slice . }}
-  {{ with resources.Get "css/theme.css" }}{{ $files = $files | append . }}{{ end }}
-  {{ $css := $files | resources.Concat "css/main.css" | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
-{{ end }}
+{{- with site.Params.favicon }}
+<link rel="icon" href="{{ . | relURL }}">
+{{- end }}
+{{- with .OutputFormats.Get "rss" }}
+{{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{- end }}
+{{ partial "opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}
+{{- with resources.Get "css/base.css" }}
+  {{- $files := slice . }}
+  {{- with resources.Get "css/theme.css" }}{{ $files = $files | append . }}{{ end }}
+  {{- $css := $files | resources.Concat "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+{{- end }}
+{{ partial "hooks/head-end.html" . }}
