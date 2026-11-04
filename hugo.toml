@@ -12,6 +12,7 @@ enableGitInfo = true
   description = 'A plain Hugo starter.'
   mainSections = ['notes']
   recentCount = 10
+  search = true
   # copyright = 'Custom footer text'
   # logo = 'images/logo.svg'
   # favicon = 'favicon.svg'
@@ -47,3 +48,5 @@ enableGitInfo = true
   [cascade.build]
     publishResources = false
 
+[services.rss]
+  limit = 20

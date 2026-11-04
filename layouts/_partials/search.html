@@ -1,0 +1,8 @@
+{{ if site.Params.search }}
+  <form action="https://duckduckgo.com/" method="get" role="search">
+    <label for="search-q">{{ i18n "search" }}</label>
+    <input type="search" id="search-q" name="q">
+    <input type="hidden" name="sites" value="{{ (urls.Parse site.BaseURL).Host }}">
+    <button type="submit">{{ i18n "search" }}</button>
+  </form>
+{{ end }}

@@ -1,0 +1,31 @@
+{{- $pages := slice }}
+{{- if .IsHome }}
+  {{- $pages = where site.RegularPages "Section" "in" site.Params.mainSections }}
+{{- else }}
+  {{- $pages = .RegularPages }}
+{{- end }}
+{{- $pages = $pages.ByDate.Reverse }}
+{{- $limit := site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}{{ $pages = first $limit $pages }}{{ end }}
+{{- printf "<?xml version=%q encoding=%q?>" "1.0" "utf-8" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ site.Params.description }}</description>
+    <language>{{ site.Language.Locale }}</language>
+    {{- with .OutputFormats.Get "rss" }}
+    {{ printf "<atom:link href=%q rel=%q type=%q/>" .Permalink "self" .MediaType.Type | safeHTML }}
+    {{- end }}
+    {{- range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <guid>{{ .Permalink }}</guid>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      {{- $content := replaceRE `(src|href)="/` (printf `$1="%s` site.BaseURL) .Content }}
+      <description>{{ $content | transform.XMLEscape | safeHTML }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

@@ -36,3 +36,9 @@ sudo systemctl restart nginx
 ### Subheading
 
 > Blockquote biasa.
+
+## Video
+
+{{< video id="jNQXAC9IVRw" title="Me at the zoo" >}}
+
+{{< video id="jNQXAC9IVRw" title="Me at the zoo" thumb="false" >}}

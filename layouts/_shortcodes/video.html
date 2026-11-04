@@ -1,0 +1,10 @@
+{{- $id := .Get "id" -}}
+{{- if not $id }}{{ errorf "video shortcode: missing id at %s" .Position }}{{ end -}}
+{{- $title := .Get "title" | default (i18n "watch_video") -}}
+{{- $url := printf "https://www.youtube.com/watch?v=%s" $id -}}
+<figure>
+  {{- if ne (.Get "thumb") "false" }}
+  <a href="{{ $url }}"><img src="https://i.ytimg.com/vi/{{ $id }}/hqdefault.jpg" alt="{{ $title }}" width="480" height="360" loading="lazy" decoding="async"></a>
+  {{- end }}
+  <figcaption><a href="{{ $url }}">▶ {{ $title }}</a> ({{ i18n "watch_video" }})</figcaption>
+</figure>

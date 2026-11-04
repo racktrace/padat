@@ -36,3 +36,9 @@ other = 'Updated'
 
 [related]
 other = 'Related'
+
+[search]
+other = 'Search'
+
+[watch_video]
+other = 'Watch on YouTube'
