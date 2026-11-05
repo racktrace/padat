@@ -36,6 +36,18 @@ A plain Hugo starter. Complete in structure, neutral in looks.
     rm -rf .git && git init -b main
     # edit hugo.toml: baseURL, title, params, menus
 
+## Layout structure
+
+    layouts/
+    ├── baseof.html, home.html, list.html, page.html, taxonomy.html, 404.html
+    ├── page/archive.html      archive page (layout = 'archive')
+    ├── _markup/               render hooks: headings, images, callouts
+    ├── _shortcodes/           video
+    └── _partials/
+        ├── site/              head, header, footer, search
+        ├── list/              page-list, pager
+        └── page/              meta, toc, tags, related, nav
+
 ## Config
 
 | Param          | Purpose                                              |
@@ -87,8 +99,31 @@ YouTube video (`thumb="false"` for a text link only):
 ## Extension points
 
 - `assets/css/theme.css`: loaded after `base.css`. Base CSS lives in `@layer padat`, so any unlayered theme CSS wins.
-- `layouts/_partials/hooks/head-end.html` and `hooks/body-end.html`: empty by default, override to add markup.
+- `layouts/_partials/hooks/head-end.html` and `hooks/body-end.html`: not included in padat. Add them in a theme or in the site to inject markup. They are only rendered if they exist.
 - `i18n/`: UI text in `en.toml` and `id.toml`.
+
+## Theme contract
+
+Themes cannot change padat's HTML, only add CSS. These selectors are stable and safe to style:
+
+| Selector                  | Element                                         |
+|---------------------------|-------------------------------------------------|
+| `body[data-kind]`         | Page kind: home, page, section, taxonomy, term  |
+| `body[data-section]`      | Section name, e.g. `notes`                      |
+| `.skip-link`              | "Skip to content" link                          |
+| `.site-header`            | Site header (title, logo, main menu)            |
+| `.site-footer`            | Site footer (search, links, copyright)          |
+| `.page-meta`              | Date and "Updated" line                         |
+| `.toc`                    | Table of contents (`<details>`)                 |
+| `.tags`                   | Tags line on a page                             |
+| `.related`                | Related pages section                           |
+| `.page-nav`               | Newer/older page navigation                     |
+| `.page-list`              | List of pages (home, sections, archive)         |
+| `.term-list`              | List of terms on taxonomy pages                 |
+| `.pager`                  | Pagination on list pages                        |
+| `.alert`, `.alert-<type>` | Callouts (note, tip, important, warning, caution) |
+
+Other elements (`article`, `figure`, `figcaption`, `pre`, `table`, `nav`) are plain semantic HTML.
 
 ## Checks
 
