@@ -29,6 +29,14 @@ A plain Hugo starter. Complete in structure, neutral in looks.
 - Open Graph, Twitter cards, canonical URL, sitemap, robots.txt
 - UI text in English and Indonesian
 
+## SEO
+
+- Title, meta description, author, canonical URL
+- Open Graph and Twitter cards (with optional default image)
+- JSON-LD: `WebSite` on the home page, `BlogPosting` on articles
+- `sitemap.xml` with git-based `lastmod`, `robots.txt`
+- `noindex` on 404 and on any page with `noindex = true`
+
 ## Start a new site
 
     cp -r padat my-site
@@ -59,6 +67,8 @@ A plain Hugo starter. Complete in structure, neutral in looks.
 | `copyright`    | Custom footer text (default: `© year title`)         |
 | `logo`         | Optional SVG in `assets/`, inlined in the header     |
 | `favicon`      | Optional favicon path in `static/`                   |
+| `author`       | Author name for meta tags and JSON-LD                |
+| `images`       | Default social image(s) in `static/`, e.g. `['images/og.png']` (1200×630) |
 
 Other settings in `hugo.toml`:
 
@@ -76,11 +86,15 @@ New article (page bundle, so images can live next to it):
 
 Front matter options:
 
-| Key      | Purpose                              |
-|----------|--------------------------------------|
-| `tags`   | List of tags                         |
-| `toc`    | `true` shows a table of contents     |
-| `layout` | `archive` for the archive page       |
+| Key                 | Purpose                                                 |
+|---------------------|---------------------------------------------------------|
+| `description`       | Meta description, Open Graph and JSON-LD. Always fill it |
+| `tags`              | List of tags                                            |
+| `toc`               | `true` shows a table of contents                        |
+| `layout`            | `archive` for the archive page                          |
+| `noindex`           | `true` asks search engines not to index the page        |
+| `[sitemap] disable` | `true` removes the page from `sitemap.xml`              |
+| `aliases`           | Old URLs that should redirect to this page              |
 
 Images: put the file in the page bundle and reference it by name.
 A title in quotes becomes the caption.
@@ -147,8 +161,9 @@ Every push and pull request runs `.github/workflows/ci.yml`:
 
 1. Build with a pinned Hugo version (`HUGO_VERSION`).
 2. Check home page weight against a 10 KB budget.
-3. Validate every generated XML file (RSS, sitemap).
-4. Check internal links and anchors with hyperlink.
+3. Validate every generated XML file (RSS, sitemap) with xmllint.
+4. Validate every generated HTML file with the Nu Html Checker (`VNU_VERSION`).
+5. Check internal links and anchors with hyperlink.
 
 Notes:
 
