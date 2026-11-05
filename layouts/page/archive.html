@@ -4,6 +4,6 @@
   {{ $pages := where site.RegularPages "Section" "in" site.Params.mainSections }}
   {{ range $pages.GroupByDate "2006" }}
     <h2>{{ .Key }}</h2>
-    {{ partial "page-list.html" .Pages }}
+    {{ partial "list/page-list.html" .Pages }}
   {{ end }}
 {{ end }}

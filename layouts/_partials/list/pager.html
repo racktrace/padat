@@ -1,5 +1,5 @@
 {{ if gt .TotalPages 1 }}
-  <nav aria-label="Pagination">
+  <nav class="pager" aria-label="{{ i18n "nav_pager" }}">
     <p>
       {{ with .Prev }}<a href="{{ .URL }}" rel="prev">← {{ i18n "newer" }}</a>{{ end }}
       {{ i18n "page_x_of_y" (dict "Current" .PageNumber "Total" .TotalPages) }}

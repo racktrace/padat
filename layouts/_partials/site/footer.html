@@ -1,6 +1,6 @@
-{{ partial "search.html" . }}
+{{ partial "site/search.html" . }}
 {{ with site.Menus.footer }}
-  <nav aria-label="Footer">
+  <nav aria-label="{{ i18n "nav_footer" }}">
     <ul>
       {{ range . }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
     </ul>

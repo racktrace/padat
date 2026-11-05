@@ -42,3 +42,15 @@ other = 'Cari'
 
 [watch_video]
 other = 'Tonton di YouTube'
+
+[nav_main]
+other = 'Utama'
+
+[nav_footer]
+other = 'Kaki halaman'
+
+[nav_pager]
+other = 'Paginasi'
+
+[nav_page]
+other = 'Navigasi halaman'

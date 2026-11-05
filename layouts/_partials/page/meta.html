@@ -1,0 +1,8 @@
+{{ if in site.Params.mainSections .Section }}
+  <p class="page-meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+    {{- if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+      · {{ i18n "updated" }} <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time>
+    {{- end }}
+  </p>
+{{ end }}

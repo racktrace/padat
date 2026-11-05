@@ -1,0 +1,6 @@
+{{ if .Params.toc }}
+  <details class="toc">
+    <summary>{{ i18n "contents" }}</summary>
+    {{ .TableOfContents }}
+  </details>
+{{ end }}

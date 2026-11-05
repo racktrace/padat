@@ -5,7 +5,7 @@
   {{ $pages := where site.RegularPages "Section" "in" site.Params.mainSections }}
   {{ with first (site.Params.recentCount | default 10) $pages.ByDate.Reverse }}
     <h2>{{ i18n "recent" }}</h2>
-    {{ partial "page-list.html" . }}
+    {{ partial "list/page-list.html" . }}
     {{ with site.GetPage (index site.Params.mainSections 0) }}
       <p><a href="{{ .RelPermalink }}">{{ i18n "see_all" }} →</a></p>
     {{ end }}

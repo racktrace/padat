@@ -3,7 +3,7 @@
   {{ site.Title }}
 </a></p>
 {{ with site.Menus.main }}
-  <nav aria-label="Main">
+  <nav aria-label="{{ i18n "nav_main" }}">
     <ul>
       {{ range . }}
         <li><a href="{{ .URL }}"

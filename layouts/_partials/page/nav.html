@@ -1,0 +1,14 @@
+{{ if in site.Params.mainSections .Section }}
+  {{ $pages := where site.RegularPages "Section" .Section }}
+  {{ $newer := $pages.Next . }}
+  {{ $older := $pages.Prev . }}
+  {{ if or $newer $older }}
+    <nav class="page-nav" aria-label="{{ i18n "nav_page" }}">
+      <p>
+        {{ with $newer }}<a href="{{ .RelPermalink }}" rel="prev">← {{ .LinkTitle }}</a>{{ end }}
+        {{ if and $newer $older }} · {{ end }}
+        {{ with $older }}<a href="{{ .RelPermalink }}" rel="next">{{ .LinkTitle }} →</a>{{ end }}
+      </p>
+    </nav>
+  {{ end }}
+{{ end }}

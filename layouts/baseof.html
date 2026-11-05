@@ -1,19 +1,21 @@
 <!doctype html>
 <html lang="{{ site.Language.Locale }}" dir="{{ or site.Language.Direction `ltr` }}">
 <head>
-  {{ partial "head.html" . }}
+  {{ partial "site/head.html" . }}
 </head>
-<body>
-  <a href="#main">{{ i18n "skip_to_content" }}</a>
-  <header>
-    {{ partial "header.html" . }}
+<body data-kind="{{ .Kind }}"{{ with .Section }} data-section="{{ . }}"{{ end }}>
+  <a class="skip-link" href="#main">{{ i18n "skip_to_content" }}</a>
+  <header class="site-header">
+    {{ partial "site/header.html" . }}
   </header>
   <main id="main">
     {{ block "main" . }}{{ end }}
   </main>
-  <footer>
-    {{ partial "footer.html" . }}
+  <footer class="site-footer">
+    {{ partial "site/footer.html" . }}
   </footer>
+  {{ if templates.Exists "_partials/hooks/body-end.html" }}
     {{ partial "hooks/body-end.html" . }}
+  {{ end }}
 </body>
 </html>

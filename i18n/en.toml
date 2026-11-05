@@ -42,3 +42,15 @@ other = 'Search'
 
 [watch_video]
 other = 'Watch on YouTube'
+
+[nav_main]
+other = 'Main'
+
+[nav_footer]
+other = 'Footer'
+
+[nav_pager]
+other = 'Pagination'
+
+[nav_page]
+other = 'Page navigation'

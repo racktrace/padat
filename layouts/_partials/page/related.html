@@ -1,0 +1,8 @@
+{{ if in site.Params.mainSections .Section }}
+  {{ with first 3 (site.RegularPages.Related .) }}
+    <section class="related">
+      <h2>{{ i18n "related" }}</h2>
+      {{ partial "list/page-list.html" . }}
+    </section>
+  {{ end }}
+{{ end }}
