@@ -4,6 +4,9 @@ draft = false
 title = 'Kitchen Sink'
 tags = ['test']
 toc = true
+noindex = true
+[sitemap]
+  disable = true
 +++
 
 Halaman uji untuk semua elemen konten. Tidak untuk di-publish.

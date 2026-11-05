@@ -96,6 +96,8 @@ YouTube video (`thumb="false"` for a text link only):
 
     {{< video id="VIDEO_ID" title="Video title" >}}
 
+Always fill `description` in front matter. It is used for the meta description, Open Graph and JSON-LD. Without it, an automatic summary is used, which may include stray characters from headings.
+
 ## Extension points
 
 - `assets/css/theme.css`: loaded after `base.css`. Base CSS lives in `@layer padat`, so any unlayered theme CSS wins.

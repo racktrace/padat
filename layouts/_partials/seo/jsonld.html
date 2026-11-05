@@ -1,0 +1,30 @@
+{{- $data := dict }}
+{{- if .IsHome }}
+  {{- $data = dict
+    "@context" "https://schema.org"
+    "@type" "WebSite"
+    "name" site.Title
+    "url" site.Home.Permalink
+    "description" site.Params.description
+    "inLanguage" site.Language.Locale
+  }}
+{{- else if in site.Params.mainSections .Section }}
+  {{- $desc := .Description }}
+  {{- if not $desc }}{{ $desc = .Summary | plainify | replaceRE `\s#(\s|$)` " " | replaceRE `\s+` " " | strings.TrimSpace }}{{ end }}
+  {{- $author := dict "@type" "Person" "name" (site.Params.author | default site.Title) }}
+  {{- $data = dict
+    "@context" "https://schema.org"
+    "@type" "BlogPosting"
+    "headline" .Title
+    "url" .Permalink
+    "mainEntityOfPage" .Permalink
+    "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "author" $author
+    "description" $desc
+    "inLanguage" site.Language.Locale
+  }}
+{{- end }}
+{{- with $data }}
+<script type="application/ld+json">{{ . | jsonify | safeJS }}</script>
+{{- end }}

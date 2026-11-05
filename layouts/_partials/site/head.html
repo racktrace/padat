@@ -1,8 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
-<link rel="canonical" href="{{ .Permalink }}">
+{{ partial "seo/meta.html" . }}
 {{- with site.Params.favicon }}
 <link rel="icon" href="{{ . | relURL }}">
 {{- end }}
@@ -11,6 +10,7 @@
 {{- end }}
 {{ partial "opengraph.html" . }}
 {{ partial "twitter_cards.html" . }}
+{{ partial "seo/jsonld.html" . }}
 {{- with resources.Get "css/base.css" }}
   {{- $files := slice . }}
   {{- with resources.Get "css/theme.css" }}{{ $files = $files | append . }}{{ end }}
