@@ -10,6 +10,7 @@ permissions:
 
 env:
   HUGO_VERSION: 0.169.0
+  VNU_VERSION: 26.11.4
 
 jobs:
   build:
@@ -41,6 +42,14 @@ jobs:
           sudo apt-get install -y -q libxml2-utils
           find public -name '*.xml' -print0 | xargs -0 xmllint --noout
           echo "All XML files are valid"
+
+      - name: Validate HTML
+        run: |
+          java -version
+          npm install --prefix /tmp/vnu --no-save --silent "vnu-jar@${VNU_VERSION}"
+          VNU_JAR=$(node -p "String(require('/tmp/vnu/node_modules/vnu-jar'))")
+          java -jar "$VNU_JAR" --skip-non-html --errors-only public/
+          echo "All HTML files are valid"
 
       - name: Check links
         uses: untitaker/hyperlink@0.3.1
